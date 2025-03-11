@@ -1,2 +1,2 @@
-fetch("https://your-backend-project.vercel.app/api/users")
+fetch("https://guess-it-neon.vercel.app/api/users")
 const x = 1;
