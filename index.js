@@ -1,1 +1,2 @@
-    const x = 1;
+fetch("https://your-backend-project.vercel.app/api/users")
+const x = 1;
