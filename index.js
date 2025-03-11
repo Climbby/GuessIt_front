@@ -5,7 +5,6 @@ fetch("https://guess-it-neon.vercel.app/api/users")
     // Display them in HTML (example):
     const list = document.getElementById("users");
     data.forEach((user) => {
-      console.log("user2: ", user);
       console.log("user.id:", user.id);
       console.log("user.name:", user.name);
       const li = document.createElement("li");
