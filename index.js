@@ -25,6 +25,7 @@ button.addEventListener('click', () => {
 
   const inputText = document.getElementById('myInput').value;
 
+  console.log("a");
   console.log(users);
 
   users.forEach(nome => {
