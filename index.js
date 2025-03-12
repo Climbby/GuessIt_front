@@ -25,13 +25,13 @@ button.addEventListener('click', () => {
 
   const inputText = document.getElementById('myInput').value;
 
+
+
+  users.forEach(nome => {
+    console.log(nome);
+  });
+
   if (users.includes(inputText)){
-
-    users.forEach(nome => {
-      console.log(nome);
-    });
-
-
 
     const newParagraph = document.createElement('p');
     newParagraph.textContent = inputText;
