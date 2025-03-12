@@ -27,18 +27,12 @@ button.addEventListener('click', () => {
 
   const inputText = document.getElementById('myInput').value;
 
-  console.log("a");
-  console.log(users);
-
   users.forEach(nome => {
-    console.log(nome);
+    if (nome[0] == inputText){
+      const newParagraph = document.createElement('p');
+      newParagraph.textContent = inputText;
+  
+      container.appendChild(newParagraph);
+    }
   });
-
-  if (users.includes(inputText)){
-
-    const newParagraph = document.createElement('p');
-    newParagraph.textContent = inputText;
-
-    container.appendChild(newParagraph);
-  }
 });
