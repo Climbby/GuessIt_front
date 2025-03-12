@@ -9,8 +9,7 @@ fetch("https://guess-it-neon.vercel.app/api/users")
       // li.textContent = `NOME: ${user.nome} | Username: ${user.grupo}`;
       // list.appendChild(li);
 
-      console.log(` ${user.nome}: ${user.idade} anos, beleza ${user.beleza}, ${user.altura}cm, vibe: ${user.vibe}, 
-                    ${user.corpo}, ${user.socializacao}, ${user.ocupacao}, ${user.grupo}`);
+      console.log(`${user.nome}: ${user.idade} anos, beleza ${user.beleza}, ${user.altura}cm, vibe: ${user.vibe}, ${user.corpo}, ${user.socializacao}, ${user.ocupacao}, ${user.grupo}`);
 
     });
   })
