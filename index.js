@@ -1,4 +1,4 @@
-const users = [];
+const users = ['teste'];
 const button = document.getElementById('myButton');
 const container = document.getElementById('container');
 
@@ -23,6 +23,7 @@ fetch("https://guess-it-neon.vercel.app/api/users")
 button.addEventListener('click', () => {
 
   const inputText = document.getElementById('myInput').value;
+  console.log("a");
   console.log(users);
 
   if (users.includes(inputText)){
