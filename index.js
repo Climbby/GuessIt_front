@@ -21,7 +21,10 @@ fetch("https://guess-it-neon.vercel.app/api/users")
   .catch((err) => console.error("Error fetching users:", err));
 
 button.addEventListener('click', () => {
+
   const inputText = document.getElementById('myInput').value;
+  console.log(users);
+
   if (users.includes(inputText)){
 
     const newParagraph = document.createElement('p');
