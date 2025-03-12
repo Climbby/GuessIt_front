@@ -21,6 +21,8 @@ fetch("https://guess-it-neon.vercel.app/api/users")
   })
   .catch((err) => console.error("Error fetching users:", err));
 
+console.log("Button is:", button);
+
 button.addEventListener('click', () => {
 
   const inputText = document.getElementById('myInput').value;
