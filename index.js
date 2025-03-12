@@ -9,7 +9,8 @@ fetch("https://guess-it-neon.vercel.app/api/users")
     const list = document.getElementById("users");
 
     data.forEach((user) => {
-      users.push(user.nome);
+      const caracteristicas = [user.nome, user.idade, user.beleza, user.altura, user.vibe, user.corpo, user.socializacao, user.ocupacao, user.grupo];
+      users.push(caracteristicas);
       const li = document.createElement("li");
       li.textContent = `${user.nome}`;
       list.appendChild(li);
@@ -25,6 +26,12 @@ button.addEventListener('click', () => {
   const inputText = document.getElementById('myInput').value;
 
   if (users.includes(inputText)){
+
+    users.forEach(nome => {
+      console.log(nome);
+    });
+
+
 
     const newParagraph = document.createElement('p');
     newParagraph.textContent = inputText;
