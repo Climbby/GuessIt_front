@@ -22,9 +22,10 @@ fetch("https://guess-it-neon.vercel.app/api/users")
   .catch((err) => console.error("Error fetching users:", err));
 
 console.log("Button is:", button);
-const randomUser = users[Math.floor(Math.random() * users.length)];
-console.log(randomUser);
-console.log(randomUser[0]);
+const randomIndex = Math.floor(Math.random() * users.length);
+console.log("users length:", users.length);
+console.log("Random index:", randomIndex);
+console.log("Random user:", users[randomIndex]);
 
 button.addEventListener('click', () => {
 
@@ -51,7 +52,7 @@ button.addEventListener('click', () => {
         container.appendChild(newParagraph); 
       }
     }
-    if (nome[0] == randomUser[0]){
+    if (inputText == randomUser[0]){
       const newParagraph = document.createElement('p');
       newParagraph.textContent = `GANHASTE!! Era o ${randomUser}`;
       container.appendChild(newParagraph);
