@@ -23,6 +23,8 @@ fetch("https://guess-it-neon.vercel.app/api/users")
 
 console.log("Button is:", button);
 const randomUser = users[Math.floor(Math.random() * users.length)];
+console.log(randomUser);
+console.log(randomUser[0]);
 
 button.addEventListener('click', () => {
 
