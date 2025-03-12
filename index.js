@@ -6,7 +6,7 @@ fetch("https://guess-it-neon.vercel.app/api/users")
 
     data.forEach((user) => {
       const li = document.createElement("li");
-      li.textContent = `ID: ${user.id} | Username: ${user.name}`;
+      li.textContent = `NOME: ${user.nome} | Username: ${user.grupo}`;
       list.appendChild(li);
     });
   })
