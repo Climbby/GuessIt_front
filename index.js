@@ -52,11 +52,12 @@ button.addEventListener('click', () => {
         container.appendChild(newParagraph); 
       }
     }
-    if (inputText == randomUser[0]){
-      const newParagraph = document.createElement('p');
-      newParagraph.textContent = `GANHASTE!! Era o ${randomUser}`;
-      container.appendChild(newParagraph);
-    }
   });
+
+  if (inputText == randomUser[0]){
+    const newParagraph = document.createElement('p');
+    newParagraph.textContent = `GANHASTE!! Era o ${randomUser[0]}`;
+    container.appendChild(newParagraph);
+  }
 
 });
