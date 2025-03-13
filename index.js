@@ -1,63 +1,120 @@
-const users = [];
-const button = document.getElementById('myButton');
-const container = document.getElementById('container');
-let randomUser;
+const ApiURL = "https://guess-it-neon.vercel.app/api/users";
+// const ApiURL = "http://localhost:3000/api/users";
+const button = document.getElementById('myButton'); 
+const answers_container = document.getElementById('answers-container');
+const list = document.getElementById("users");
+const inputText = document.getElementById('myInput');
 
-fetch("https://guess-it-neon.vercel.app/api/users")
+const users = [];
+let randomUser;
+let caracteristicas = {};
+let numCharacteristicas = 0;
+
+fetch(ApiURL)
   .then((res) => res.json())
   .then((data) => {
 
-    const list = document.getElementById("users");
-
     data.forEach((user) => {
-      const caracteristicas = [user.nome, user.idade, user.beleza, user.altura, user.vibe, user.corpo, user.socializacao, user.ocupacao, user.grupo];
+
+      caracteristicas = { nome: user.nome, beleza: user.beleza, altura: user.altura, vibe: user.vibe, 
+                          corpo: user.corpo, socializacao: user.socializacao, ocupacao: user.ocupacao, grupo: user.grupo};
       users.push(caracteristicas);
+
+      numCharacteristicas = Object.values(caracteristicas).length;
+      
       const li = document.createElement("li");
       li.textContent = `${user.nome}`;
       list.appendChild(li);
-
-      // console.log(`${user.nome}: ${user.idade} anos, beleza ${user.beleza}, ${user.altura}cm, vibe: ${user.vibe}, ${user.corpo}, ${user.socializacao}, ${user.ocupacao}, ${user.grupo}`);
-
     });
 
-    randomUser = users[Math.floor(Math.random() * users.length)];
+    const randomIndex = Math.floor(Math.random() * users.length);
+    randomUser = users[randomIndex];
 
   })
   .catch((err) => console.error("Error fetching users:", err));
 
-console.log("teste a");
+function autoShrinkText(containerSelector, textSelector){
+  const containers = document.querySelectorAll(containerSelector);
+
+  containers.forEach(container => {
+    const texts = container.querySelectorAll(textSelector);
+
+    texts.forEach(text => {
+      let fontSize = 16;
+      text.style.fontSize = fontSize + 'px';
+      
+      // Shrink until it fits — no min cap
+      while (text.scrollWidth > 80 || text.scrollHeight > 80) {
+        fontSize--;
+        text.style.fontSize = fontSize + 'px';
+      }
+    });
+  });
+};
 
 button.addEventListener('click', () => {
 
-  const inputText = document.getElementById('myInput').value;
+  users.forEach(person => {
 
-  users.forEach(nome => {
-    if (nome[0] == inputText){
-      const newParagraph = document.createElement('p');
-      newParagraph.textContent = nome.join(' | ');
-      container.appendChild(newParagraph);
-      if(nome[3] < randomUser[3]){
-        const newParagraph = document.createElement('p');
-        newParagraph.textContent = `Ele é mais alto`;
-        container.appendChild(newParagraph);  
+    if (person.nome == inputText.value){
+      const newAnswer = document.createElement('div');
+      newAnswer.classList.add('newAnswer');
+
+      for(let i = 0; i < numCharacteristicas; i++){
+
+        const caracteristicaPessoa = Object.values(person)[i];
+        const caracteristicaRandom = Object.values(randomUser)[i];
+
+        const newCharacteristic = document.createElement('div');
+        newCharacteristic.classList.add('newCharacteristic');
+        newCharacteristic.textContent = caracteristicaPessoa;
+
+        if (caracteristicaPessoa == person.vibe){
+          newCharacteristic.textContent = caracteristicaPessoa.join(', ');
+
+          caracteristicaPessoa.forEach(caracteri => {
+            if(caracteristicaRandom.includes(caracteri)){
+              newCharacteristic.classList.add('contem');
+            }
+
+          });
+
+        }
+
+        if (caracteristicaPessoa == person.altura){
+          if (caracteristicaPessoa > caracteristicaRandom){
+            newCharacteristic.textContent = caracteristicaPessoa + ' ↓';
+          }
+          else if (caracteristicaPessoa < caracteristicaRandom){
+            newCharacteristic.textContent = caracteristicaPessoa + ' ↑';
+          }
+          else{
+            newCharacteristic.textContent = caracteristicaPessoa; 
+          }
+
+        }
+
+        if(caracteristicaPessoa == caracteristicaRandom){
+          newCharacteristic.classList.remove('contem');
+          newCharacteristic.classList.add('certo');
+        };
+
+        newAnswer.appendChild(newCharacteristic);
       }
-      if(nome[3] == randomUser[3]){
-        const newParagraph = document.createElement('p');
-        newParagraph.textContent = `Tem esse tamanho`;
-        container.appendChild(newParagraph);
-      }
-      if(nome[3] > randomUser[3]){
-        const newParagraph = document.createElement('p');
-        newParagraph.textContent = `Ele é mais baixo`;
-        container.appendChild(newParagraph); 
-      }
+  
+      answers_container.appendChild(newAnswer);
+      autoShrinkText('.newAnswer', '.newCharacteristic');
+
     }
   });
 
-  if (inputText == randomUser[0]){
-    const newParagraph = document.createElement('p');
-    newParagraph.textContent = `GANHASTE!! Era o ${randomUser[0]}`;
-    container.appendChild(newParagraph);
+  if (inputText.value == randomUser.nome){
+    const winner = document.createElement('p');
+    winner.classList.add('ganhador');
+    winner.textContent = `GANHASTE!! Era o ${randomUser.nome}`;
+    answers_container.appendChild(winner);
   }
+
+  inputText.value = "";
 
 });

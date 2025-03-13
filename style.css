@@ -1,3 +1,32 @@
-body{
-    font-size: 1rem;
+#answers-container {
+    display: flex;
+    flex-direction: column-reverse;
+}
+.newAnswer{
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    margin-bottom: 10px;
+}
+.newCharacteristic{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border: 3px solid rgb(0, 0, 0);
+    background-color: rgb(255, 119, 119);
+    width: 80px;
+    height: 80px;
+}
+.certo{
+    background-color: rgb(116, 255, 116);
+}
+.contem{
+    background-color: rgb(216, 216, 73);
+}
+.ganhador{
+    font-size: 2rem;
+    color: greenyellow;
+    text-shadow: 3px 3px black;
+    text-align: center;
 }
