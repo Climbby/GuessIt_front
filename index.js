@@ -1,6 +1,7 @@
 const users = [];
 const button = document.getElementById('myButton');
 const container = document.getElementById('container');
+let randomUser;
 
 fetch("https://guess-it-neon.vercel.app/api/users")
   .then((res) => res.json())
@@ -18,14 +19,13 @@ fetch("https://guess-it-neon.vercel.app/api/users")
       // console.log(`${user.nome}: ${user.idade} anos, beleza ${user.beleza}, ${user.altura}cm, vibe: ${user.vibe}, ${user.corpo}, ${user.socializacao}, ${user.ocupacao}, ${user.grupo}`);
 
     });
+
+    randomUser = users[Math.floor(Math.random() * users.length)];
+
   })
   .catch((err) => console.error("Error fetching users:", err));
 
-console.log("Button is:", button);
-const randomIndex = Math.floor(Math.random() * users.length);
-console.log("users length:", users.length);
-console.log("Random index:", randomIndex);
-console.log("Random user:", users[randomIndex]);
+console.log("teste a");
 
 button.addEventListener('click', () => {
 
