@@ -2,81 +2,81 @@ body{
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-color: lightblue;
     margin: 0;
 }
 
-#answers-container {
-    display: flex;
-    flex-direction: column-reverse;
-}
-.newAnswer{
-    display: flex;
-    justify-content: center;
-    gap: 5px;
-    margin-bottom: 10px;
-}
-.newCharacteristic{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    border: 3px solid rgb(0, 0, 0);
-    background-color: rgb(255, 119, 119);
-    width: 80px;
-    height: 80px;
-}
-.certo{
-    background-color: rgb(116, 255, 116);
-}
-.contem{
-    background-color: rgb(216, 216, 73);
-}
-.ganhador{
-    font-size: 2rem;
-    color: greenyellow;
-    text-shadow: 3px 3px black;
-    text-align: center;
-}
-
-#myInput{
-    width: 184px;
-    height: 18.4px;
-    padding: 8px;
-    font-size: 16px;
-    border: 1px solid black;
-}
-
-#dropdown {
-    position: absolute;
-    padding-top: 8px;
-    padding-bottom: 8px;
-    border: 1px solid #0b0b0b;
-    max-height: 180px;
-    overflow-y: auto;
-    background-color: white;
-    width: 200px;
-    display: none;
-}
-#dropdown div {
-    padding: 8px;
-    cursor: pointer;
-}
-#dropdown div:hover {
-    background-color: #f0f0f0;
-}
-
-#myButton{
-    height: 36px;
-    font-size: 16px;
-    padding: 8px;
-    border: 1px solid black;
-}
-
-.inputContainer{
+.inputContainer{ /*aligns input text and button*/
     display: flex;
     align-items: flex-start;
 }
+    .inputWrapper{ /*wraps input text and dropdown*/
+        margin-bottom: 30px;
+    }
+        #myInput{
+            width: 184px;
+            height: 18.4px;
+            padding: 8px;
+            font-size: 16px;
+            border: 1px solid black;
+        }
 
-.inputWrapper{
-    margin-bottom: 30px;
+        #dropdown{ /*(bundle/wraper) of items*/
+            position: absolute; /*to not shift the layout*/
+            padding-top: 8px;
+            padding-bottom: 8px;
+            border: 1px solid #0b0b0b;
+            max-height: 180px; /*to show 6th element slightly*/
+            overflow-y: auto;  /*to create sidebar when overflow*/
+            background-color: white;
+            width: 200px;
+            display: none;
+        }
+        #dropdown div{ /*each item*/
+            padding: 8px;
+            cursor: pointer;
+        }
+        #dropdown div:hover{
+            background-color: #f0f0f0;
+        }
+
+    #myButton{ /*sumbit button*/
+        height: 36px; /*here height accounts for padding and border, so it's 36px !!IN TOTAL!!*/
+        font-size: 16px;
+        padding: 8px;
+        border: 1px solid black;
+    }
+
+#answers-container{ /*all answers wraper*/
+    display: flex;
+    flex-direction: column-reverse; /*old answers go down off the screen*/
+}
+    .newAnswer{ /*each (answer/row)*/
+        display: flex;
+        justify-content: center;
+        gap: 5px; /*gap between elements*/
+        margin-bottom: 10px; /*spacing between rows*/
+    }
+        .newCharacteristic{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            border: 3px solid rgb(0, 0, 0);
+            background-color: rgb(255, 119, 119);
+            width: 80px;
+            height: 80px;
+        }
+        .contem{ /*if vibes includes characteristic*/
+            background-color: rgb(216, 216, 73);
+        }
+        .certo{ /*if characteristic matches*/
+            background-color: rgb(116, 255, 116);
+        }
+
+.ganhador{ /*winner text*/
+font-size: 2rem;
+color: greenyellow;
+text-shadow: 3px 3px black;
+text-align: center;
 }
