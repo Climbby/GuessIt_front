@@ -37,3 +37,46 @@ body{
     text-shadow: 3px 3px black;
     text-align: center;
 }
+
+#myInput{
+    width: 184px;
+    height: 18.4px;
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid black;
+}
+
+#dropdown {
+    position: absolute;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    border: 1px solid #0b0b0b;
+    max-height: 180px;
+    overflow-y: auto;
+    background-color: white;
+    width: 200px;
+    display: none;
+}
+#dropdown div {
+    padding: 8px;
+    cursor: pointer;
+}
+#dropdown div:hover {
+    background-color: #f0f0f0;
+}
+
+#myButton{
+    height: 36px;
+    font-size: 16px;
+    padding: 8px;
+    border: 1px solid black;
+}
+
+.inputContainer{
+    display: flex;
+    align-items: flex-start;
+}
+
+.inputWrapper{
+    margin-bottom: 30px;
+}

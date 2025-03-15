@@ -10,12 +10,13 @@
 
     <h1>Guess It (Versao-UGC)</h1>
 
-    <p>opcoes:</p>
-    <ul id="users"></ul>
-
-    <p>Insert a name:</p>
-    <input type="text" id ="myInput">
-    <button id="myButton">Submit</button>
+    <div class="inputContainer">
+        <div class="inputWrapper">
+            <input type="text" id ="myInput" placeholder="Type someone's name..." autocomplete="off">
+            <div id="dropdown"></div>
+        </div>
+        <button id="myButton">Submit</button>
+    </div>
 
     <div id="answers-container"></div>
 

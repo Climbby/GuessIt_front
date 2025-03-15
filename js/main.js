@@ -1,6 +1,5 @@
 import { fetchUsers } from './api.js';
-import { list } from './domElements.js';
-import { setupGame } from './gameLogic.js';
+import { initAutocomplete, submitAnswer } from './utils/events.js';
 
 let users = [];
 let randomUser = null;
@@ -20,14 +19,14 @@ fetchUsers().then(data => {
     };
 
     users.push(caracteristicas);
-    const li = document.createElement('li');
-    li.textContent = user.nome;
-    list.appendChild(li);
   });
 
   numCharacteristicas = Object.values(users[0]).length;
   const randomIndex = Math.floor(Math.random() * users.length);
   randomUser = users[randomIndex];
 
-  setupGame(users, randomUser, numCharacteristicas);
+  //events
+  initAutocomplete(users);
+  submitAnswer(users, randomUser, numCharacteristicas);
+
 });
