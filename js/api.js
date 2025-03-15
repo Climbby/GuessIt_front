@@ -1,5 +1,5 @@
-// const ApiURL = "https://guess-it-neon.vercel.app/api/users";
-const ApiURL = "http://localhost:3000/api/users";
+const ApiURL = "https://guess-it-neon.vercel.app/api/users";
+// const ApiURL = "http://localhost:3000/api/users";
 
 export async function fetchUsers() {
     try {
