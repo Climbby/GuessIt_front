@@ -158,6 +158,10 @@ function handleSelection(selectedIndex) {
     item.classList.remove('selected'); // Remove old selection
     if (index === selectedIndex) {
       item.classList.add('selected'); // Add class to selected item
+      item.scrollIntoView({
+        block: 'nearest', // keeps it minimal (no big jump)
+        behavior: 'smooth' // optional — smooth animation
+      });
     }
   });
 }
