@@ -1,6 +1,8 @@
 import { button, answersContainer, inputText } from '../domElements.js'
 import { autoShrinkText, arraysEqual } from './funcs.js';
 
+let dropdownItems;
+
 export function initAutoComplete(users, randomUser) {  
 
   const dropdown = document.querySelector('#dropdown');
@@ -20,6 +22,7 @@ export function initAutoComplete(users, randomUser) {
       filtered.forEach(option => {
         const item = document.createElement("div");
         item.textContent = option;
+
         item.onclick = () => {
           inputText.value = option;
           handleButtonClick(users, randomUser);  
@@ -28,6 +31,8 @@ export function initAutoComplete(users, randomUser) {
         dropdown.appendChild(item);
       });
       dropdown.style.display = "block";
+      dropdownItems = dropdown.querySelectorAll('div');
+      handleSelection(0);
     } 
     else {
       dropdown.style.display = "none";
@@ -48,6 +53,38 @@ export function submitAnswer(users, randomUser){
 
     button.addEventListener('click', () => {handleButtonClick(users, randomUser)});
 }
+
+export function inputTextSelection(users, randomUser){
+
+  let selectedIndex = 0;
+
+  inputText.addEventListener('keydown', event => {
+  
+    switch (event.key) {
+      case 'ArrowDown':
+        event.preventDefault();
+        if (selectedIndex < dropdownItems.length - 1) {
+          selectedIndex++;
+          handleSelection(selectedIndex);
+        }        
+        break;
+
+      case 'ArrowUp':
+        event.preventDefault();
+        if (selectedIndex > 0) {
+          selectedIndex--;
+          handleSelection(selectedIndex);
+        }      
+        break;
+        
+      case 'Enter':
+        inputText.value = dropdownItems[selectedIndex].textContent;
+        dropdown.style.display = "none";
+        handleButtonClick(users, randomUser);   
+        break;
+    }
+  });
+};
 
 function handleButtonClick(users, randomUser){
 
@@ -114,4 +151,13 @@ function handleButtonClick(users, randomUser){
   }
 
   inputText.value = ""; 
+}
+
+function handleSelection(selectedIndex) {
+  dropdownItems.forEach((item, index) => {
+    item.classList.remove('selected'); // Remove old selection
+    if (index === selectedIndex) {
+      item.classList.add('selected'); // Add class to selected item
+    }
+  });
 }

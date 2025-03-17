@@ -1,4 +1,4 @@
-import { initAutoComplete, submitAnswer } from './utils/events.js';
+import { initAutoComplete, submitAnswer, inputTextSelection } from './utils/events.js';
 import { fetchUsers } from './api.js';
 
 fetchUsers().then(data => {
@@ -9,6 +9,7 @@ fetchUsers().then(data => {
 
   //events
   initAutoComplete(users, randomUser);
+  inputTextSelection(users, randomUser);
   submitAnswer(users, randomUser);
 
 });
