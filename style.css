@@ -135,3 +135,9 @@ body{
         font-size: 2rem;
         white-space: pre-line;
     }
+
+#gitHubW{
+    position: fixed;
+    left: 40px;
+    bottom: 40px;
+}
