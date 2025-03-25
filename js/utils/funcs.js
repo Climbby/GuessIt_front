@@ -1,21 +1,30 @@
-export function autoShrinkText(containerSelector, textSelector) {
-    const containers = document.querySelectorAll(containerSelector);
-  
-    containers.forEach(container => {
-      const texts = container.querySelectorAll(textSelector);
-  
-      texts.forEach(text => {
-        let fontSize = 16;
-        text.style.fontSize = fontSize + 'px';
-  
-        while (text.scrollWidth > 80 || text.scrollHeight > 80) {
-          fontSize--;
-          text.style.fontSize = fontSize + 'px';
-        }
+import { answersLabel } from '../domElements.js'
+import { autoShrinkText } from './utils.js';
+
+export function handleSelection(selectedIndex, dropdownItems) {
+  dropdownItems.forEach((item, index) => {
+    item.classList.remove('selected'); // Remove old selection
+    if (index === selectedIndex) {
+      item.classList.add('selected'); // Add class to selected item
+      item.scrollIntoView({
+        block: 'nearest', // keeps it minimal (no big jump)
+        behavior: 'smooth' // optional — smooth animation
       });
-    });
+    }
+  });
 }
-  
-export function arraysEqual(a, b) {
-    return a.length === b.length && a.every((val, index) => val === b[index]);
+
+export function makeLabels(person){
+
+  for (let characteristca in person) {
+    if (characteristca == 'id') continue;
+
+    const newLabel = document.createElement('div');
+    newLabel.classList.add('newLabel');
+    newLabel.textContent = characteristca;
+
+    answersLabel.appendChild(newLabel);
+  }
+
+  autoShrinkText('#answers-label', '.newLabel');
 }
