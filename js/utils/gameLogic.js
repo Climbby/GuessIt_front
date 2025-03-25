@@ -1,5 +1,6 @@
 import { answersContainer, inputText, answersLabel, inputContainer, winnerContainer, winnerText, colorInfo } from '../domElements.js'
 import { autoShrinkText, arraysEqual } from './utils.js';
+import { isColorHidden } from './globals.js'
 
 export function gameLogic(users, randomUser){
 
@@ -40,7 +41,7 @@ export function gameLogic(users, randomUser){
     // Reset inputText box text
     inputText.value = ""; 
     answersLabel.style.display = "flex";
-    colorInfo.style.display = "flex";
+    if (!isColorHidden()) colorInfo.style.display = "flex";
 }
 
 function caseVibe(newCharacteristic, personVal, randomVal){

@@ -121,6 +121,7 @@ body{
         }
 
 #color-info{
+    position: relative;
     display: none;
     margin-top: 30px;
     color: hsl(195, 100%, 15%);
@@ -131,6 +132,13 @@ body{
     border-radius: 5px;
     background-color: hsl(195, 85%, 90%);; 
 }
+    #close-button{
+        position: absolute;
+        right: -10px;
+        top: -10px;
+        width: 70px;
+        height: 70px;
+    }
     #color-text{
         font-size: 2rem;
         white-space: pre-line;

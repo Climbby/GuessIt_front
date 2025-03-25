@@ -1,4 +1,4 @@
-import { initAutoComplete, submitAnswer, inputTextSelection } from './utils/events.js';
+import { initAutoComplete, submitAnswer, inputTextSelection, closeColors } from './utils/events.js';
 import { makeLabels } from './utils/funcs.js';
 import { fetchUsers } from './api.js';
 
@@ -13,5 +13,6 @@ fetchUsers().then(data => {
   inputTextSelection(users, randomUser);
   submitAnswer(users, randomUser);
   makeLabels(users[0]);
+  closeColors();
 
 });

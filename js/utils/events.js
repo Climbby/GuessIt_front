@@ -1,6 +1,7 @@
-import { button, inputText } from '../domElements.js'
+import { button, inputText, closeButton, colorInfo } from '../domElements.js'
 import { handleSelection } from './funcs.js'
 import { gameLogic } from './gameLogic.js'
+import { setColorHidden } from './globals.js'
 
 let dropdownItems;
 
@@ -85,4 +86,12 @@ export function inputTextSelection(users, randomUser){
         break;
       }
     });
+}
+
+export function closeColors(){
+
+  closeButton.addEventListener('click', () => {
+    setColorHidden();
+    colorInfo.style.display = "none";
+  });
 }
