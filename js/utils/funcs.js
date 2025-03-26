@@ -1,7 +1,11 @@
-import { answersLabel } from '../domElements.js'
+import { answersLabel } from '../domElements.js';
 import { autoShrinkText } from './utils.js';
+import { getDropdownItems } from './globals.js';
 
-export function handleSelection(selectedIndex, dropdownItems) {
+export function handleSelection(selectedIndex) {
+
+  let dropdownItems = getDropdownItems();
+
   dropdownItems.forEach((item, index) => {
     item.classList.remove('selected'); // Remove old selection
     if (index === selectedIndex) {

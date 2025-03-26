@@ -1,13 +1,11 @@
 import { button, inputText, closeButton, colorInfo } from '../domElements.js'
 import { handleSelection } from './funcs.js'
 import { gameLogic } from './gameLogic.js'
-import { setColorHidden } from './globals.js'
-
-let dropdownItems;
+import { setColorHidden, setItems, getDropdownItems, getDropdownItem } from './globals.js'
 
 export function initAutoComplete(users, randomUser) {  
 
-  const dropdown = document.querySelector('#dropdown');
+  const dropdown = document.querySelector('#dropdown'); 
 
   inputText.addEventListener("input", () => {
     const input = inputText.value.toLowerCase();
@@ -33,8 +31,8 @@ export function initAutoComplete(users, randomUser) {
         dropdown.appendChild(item);
       });
       dropdown.style.display = "block";
-      dropdownItems = dropdown.querySelectorAll('div');
-      handleSelection(0, dropdownItems);
+      setItems(dropdown);
+      handleSelection(0);
     } 
     else {
       dropdown.style.display = "none";
@@ -61,13 +59,15 @@ export function inputTextSelection(users, randomUser){
   let selectedIndex = 0;
 
   inputText.addEventListener('keydown', event => {
-  
+
+    let dropdownItems = getDropdownItems();
+
     switch (event.key) {
       case 'ArrowDown':
         event.preventDefault();
         if (selectedIndex < dropdownItems.length - 1) {
           selectedIndex++;
-          handleSelection(selectedIndex, dropdownItems);
+          handleSelection(selectedIndex);
         }        
         break;
 
@@ -75,12 +75,12 @@ export function inputTextSelection(users, randomUser){
         event.preventDefault();
         if (selectedIndex > 0) {
           selectedIndex--;
-          handleSelection(selectedIndex, dropdownItems);
+          handleSelection(selectedIndex);
         }      
         break;
         
       case 'Enter':
-        inputText.value = dropdownItems[selectedIndex].textContent;
+        inputText.value = getDropdownItem(selectedIndex).textContent;
         dropdown.style.display = "none";
         gameLogic(users, randomUser);   
         break;
