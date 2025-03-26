@@ -1,7 +1,7 @@
-import { button, inputText, closeButton, colorInfo } from '../domElements.js'
+import { button, inputText, closeButton, colorInfo } from './domElements.js'
 import { handleSelection } from './funcs.js'
-import { gameLogic } from './gameLogic.js'
-import { setColorHidden, setItems, getDropdownItems, getDropdownItem } from './globals.js'
+import { gameLogic } from '../gameLogic.js'
+import { setColorHidden, setItems, getDropdownItems, getItemContent } from './globals.js'
 
 export function initAutoComplete(users, randomUser) {  
 
@@ -80,7 +80,7 @@ export function inputTextSelection(users, randomUser){
         break;
         
       case 'Enter':
-        inputText.value = getDropdownItem(selectedIndex).textContent;
+        inputText.value = getItemContent(selectedIndex);
         dropdown.style.display = "none";
         gameLogic(users, randomUser);   
         break;

@@ -1,4 +1,4 @@
-import { answersLabel } from '../domElements.js';
+import { answersLabel } from './domElements.js';
 import { autoShrinkText } from './utils.js';
 import { getDropdownItems } from './globals.js';
 

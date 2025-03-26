@@ -1,6 +1,6 @@
-import { answersContainer, inputText, answersLabel, inputContainer, winnerContainer, winnerText, colorInfo } from '../domElements.js'
-import { autoShrinkText, arraysEqual } from './utils.js';
-import { isColorHidden } from './globals.js'
+import { answersContainer, inputText, answersLabel, inputContainer, winnerContainer, winnerText, colorInfo } from './utils/domElements.js'
+import { autoShrinkText, arraysEqual } from './utils/utils.js';
+import { isColorHidden } from './utils/globals.js'
 
 export function gameLogic(users, randomUser){
 

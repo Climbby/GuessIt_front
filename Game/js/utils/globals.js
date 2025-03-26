@@ -14,6 +14,6 @@ export function setItems(group = document){
 export function getDropdownItems(){
     return dropdownItems;
 }
-export function getDropdownItem(index){
-    return dropdownItems[index];
+export function getItemContent(index){
+    return dropdownItems[index].textContent;
 }
