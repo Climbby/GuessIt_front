@@ -1,0 +1,11 @@
+@font-face{
+    font-family: "Coolvetica-Regular";
+    src: url(Fonts/Coolvetica-Regular.otf);
+    font-display: swap;
+}
+
+body{
+    font-family: "Coolvetica-Regular", sans-serif;
+    letter-spacing: 1px;
+    margin: 0;
+}

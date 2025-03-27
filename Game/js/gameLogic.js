@@ -32,7 +32,7 @@ export function gameLogic(users, randomUser){
   
         // Add row of characteristics
         answersContainer.appendChild(newAnswer);
-        autoShrinkText('.newAnswer', '.newCharacteristic');
+        setTimeout(autoShrinkText('.newAnswer', '.newCharacteristic'), 1000);
       }
     });
   

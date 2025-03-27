@@ -1,3 +1,5 @@
+@import url('../global.css');
+
 body{
     display: flex;
     flex-direction: column;
@@ -8,7 +10,6 @@ body{
     background-size: cover; 
     background-position: center;
     background-attachment: fixed; 
-    margin: 0;
 }
 
 #title{
@@ -148,4 +149,11 @@ body{
     position: fixed;
     left: 40px;
     bottom: 40px;
+}
+#homePage{
+    position: fixed;
+    right: 40px;
+    bottom: 40px;
+    width: 98px;
+    height: 96px;
 }

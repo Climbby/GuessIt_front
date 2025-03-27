@@ -30,5 +30,5 @@ export function makeLabels(person){
     answersLabel.appendChild(newLabel);
   }
 
-  autoShrinkText('#answers-label', '.newLabel');
+  setTimeout(autoShrinkText('#answers-label', '.newLabel'), 1000);
 }
