@@ -1,8 +1,20 @@
 const databaseOptions = document.querySelectorAll(".databaseOption");
+const passwordBox = document.querySelector(".passwordBox");
+const passwordButton = document.getElementById("submitPassword");
+const passwordText = document.getElementById("passwordField");
 
 databaseOptions.forEach(databaseOption => {
 
     databaseOption.addEventListener('click', () => {
-        console.log("yoou clicked me!!!!!!!!!!! uwu");
+
+        passwordBox.style.display = "block";
+         
     })
+});
+
+passwordButton.addEventListener('click', () => {
+
+    if (passwordText.value == "teste"){
+        window.location.pathname = "GuessIt_front/Game/game.html";
+    }
 });

@@ -13,7 +13,6 @@ body{
     background-color: chocolate;
 }
 
-a{
-    text-decoration: none;
-    color: inherit;
+.passwordBox{
+    display: none;
 }
