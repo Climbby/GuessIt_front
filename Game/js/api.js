@@ -1,5 +1,5 @@
 const table = "databases";
-const ApiURL = `https://guess-it-neon.vercel.app/api/UGC?table=${table}`;
+const ApiURL = `https://guess-it-neon.vercel.app/api/databases?table=${table}`;
 // const ApiURL = "http://localhost:3000/api/users";
 
 export async function fetchUsers() {
