@@ -7,7 +7,7 @@ export async function fetchUsers() {
     console.log(ApiURL);
 
     try {
-      const res = await fetch(`https://guess-it-neon.vercel.app/api/UGC?table=databases`);
+      const res = await fetch(``);
       return await res.json();
     } catch (err) {
       console.error("Error fetching users:", err);
