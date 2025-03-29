@@ -32,3 +32,9 @@ export function makeLabels(person){
 
   setTimeout(autoShrinkText('#answers-label', '.newLabel'), 1000);
 }
+
+export function setTitle(tableName){
+
+  const title = document.getElementById("title");
+  title.textContent = `GuessIt (${tableName})`;
+}
