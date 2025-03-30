@@ -7,3 +7,4 @@ export const inputText = document.getElementById('myInput');
 export const button = document.getElementById('myButton');
 export const colorInfo = document.getElementById('color-info');
 export const closeButton = document.getElementById('close-button');
+export const timeoutText = document.getElementById('timeoutBox');

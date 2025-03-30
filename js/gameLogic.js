@@ -1,13 +1,19 @@
-import { answersContainer, inputText, answersLabel, inputContainer, winnerContainer, winnerText, colorInfo } from './utils/domElements.js'
-import { autoShrinkText, arraysEqual } from './utils/utils.js';
+import { answersContainer, inputText, answersLabel, inputContainer, winnerContainer, winnerText, colorInfo, timeoutText } from './utils/domElements.js'
+import { autoShrinkText, arraysEqual } from './utils/utils.js'
 import { isColorHidden } from './utils/globals.js'
+import { dailyTimeout } from './utils/funcs.js'
 
 export function gameLogic(users, randomUser){
 
+    if (dailyTimeout()){
+      timeoutText.style.display = "block"; 
+      timeoutText.textContent = "You've already played today! Come back tomorrow.";  
+      return;
+    }
     const numCharacteristicas = Object.values(users[0]).length;
-  
+
     users.forEach(person => {
-      if (person.nome.toUpperCase() === inputText.value.toUpperCase()) { // if name is valid
+      if (person.username.toUpperCase() === inputText.value.toUpperCase()) { // if name is valid
         const newAnswer = document.createElement('div');
         newAnswer.classList.add('newAnswer');
   
@@ -19,8 +25,10 @@ export function gameLogic(users, randomUser){
           newCharacteristic.textContent = personVal;
   
           if (personVal === person.id) continue;
-          if (personVal === person.vibe) caseVibe(newCharacteristic, personVal, randomVal);
-          if (personVal === person.altura) caseAltura(newCharacteristic, personVal, randomVal);
+          // if (personVal === person.vibe) caseVibe(newCharacteristic, personVal, randomVal);
+          // if (personVal === person.altura) caseAltura(newCharacteristic, personVal, randomVal);
+          
+
           if (personVal === randomVal) newCharacteristic.classList.add('certo');
   
           newAnswer.appendChild(newCharacteristic);
@@ -31,12 +39,6 @@ export function gameLogic(users, randomUser){
         users.splice(index, 1);
   
         // Add row of characteristics
-
-        //  ekjjafhiewhfuihaeuifh
-        // ifahishefaeshlf
-        // asefiehsifhiuashef
-        // aefhsaihfisahef
-        // asefihasifisea  
         answersContainer.appendChild(newAnswer);
         animateAnswer(newAnswer);
         setTimeout(() => autoShrinkText('.newAnswer', '.newCharacteristic'), 800);
@@ -74,10 +76,11 @@ function caseAltura(newCharacteristic, personVal, randomVal){
 }
 
 function isCorrect(inputText, randomUser){
-    if (inputText.value.toUpperCase() === randomUser.nome.toUpperCase()) {
+    if (inputText.value.toUpperCase() === randomUser.username.toUpperCase()) {
         winnerContainer.style.display = "block";
-        winnerText.textContent = `YOU WIN\nAnswer: ${randomUser.nome}`;
+        winnerText.textContent = `YOU WIN\nAnswer: ${randomUser.username}`;
         inputContainer.style.display = "none";
+        localStorage.setItem('lastPlayedDate', new Date().toISOString().split('T')[0]);
     }
 }
 

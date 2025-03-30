@@ -38,3 +38,9 @@ export function setTitle(tableName){
   const title = document.getElementById("title");
   title.textContent = `GuessIt (${tableName})`;
 }
+
+export function dailyTimeout() {
+  const lastPlayed = localStorage.getItem('lastPlayedDate');
+  const today = new Date().toISOString().split('T')[0]; // Get YYYY-MM-DD format
+  return lastPlayed === today;
+}
