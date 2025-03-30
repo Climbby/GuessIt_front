@@ -3,22 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Main Page</title>
-    <link rel="stylesheet" href="MainPage/style.css">
+    <title>GuessIt</title>
+    <link rel="icon" href="assets/favIcon.png" type="image/png">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    
-    <h1>GUESS IT</h1>
 
-    <h2>Choose the group you want to GUESS</h2>
+    <h1 id="title">GuessIt</h1>
 
-    <div class="databaseOptions"></div>
+    <div class="inputContainer">
+        <div class="inputWrapper">
+            <input type="text" id ="myInput" placeholder="Type someone's name..." autocomplete="off">
+            <div id="dropdown"></div>
+        </div>
+        <button id="myButton">Submit</button>
+    </div>
     
-    <div class="passwordBox">
-        <input id="passwordField" type="password" placeholder="Enter the password">
-        <button id="submitPassword">Submit</button>
+    <div id="winner-container">
+        <p id="winner-text"></p>
     </div>
 
-    <script type="module" src="MainPage/index.js"></script>
+    <div id="answers-label"></div>
+
+    <div id="answers-container"></div>
+
+    <div id="color-info">
+        <img id="close-button" src="assets/closeButton.png" alt="closeButton">
+        <p id="color-text">Green - Right<br>Yellow - Almost Right<br>Red - Wrong</p>
+    </div>
+
+    <a href="https://github.com/Climbby/GuessIt_front" target="_blank">
+        <img id="gitHubW" src="assets/GithubW.svg" alt="GitHubW">
+    </a>
+
+    <script type="module" src="js/main.js"></script>
 </body>
 </html>

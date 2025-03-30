@@ -1,0 +1,170 @@
+@font-face{
+    font-family: "Coolvetica-Regular";
+    src: url(Fonts/Coolvetica-Regular.otf);
+    font-display: swap;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: "Coolvetica-Regular", sans-serif;
+    background-color: hsl(195, 53%, 79%);
+    background-image: url("assets/backgroundSky.jpg");
+    background-repeat: no-repeat; 
+    background-size: cover; 
+    background-position: center;
+    background-attachment: fixed; 
+    margin: 0;
+    letter-spacing: 1px;
+}
+
+#title{
+    font-size: 3rem;
+    color: white;
+}
+
+.inputContainer{ /*aligns input text and button*/
+    display: flex;
+    align-items: flex-start;
+}
+    .inputWrapper{ /*wraps input text and dropdown*/
+        margin-bottom: 30px;
+    }
+        #myInput{
+            width: 184px;
+            height: 18.4px;
+            padding: 8px;
+            font-size: 16px;
+            border: 1px solid black;
+        }
+
+        #dropdown{ /*(bundle/wraper) of items*/
+            position: absolute; /*to not shift the layout*/
+            padding-top: 8px;
+            padding-bottom: 8px;
+            border: 1px solid #0b0b0b;
+            max-height: 180px; /*to show 6th element slightly*/
+            overflow-y: auto;  /*to create sidebar when overflow*/
+            background-color: white;
+            width: 200px;
+            display: none;
+        }
+        #dropdown > div{ /*each item*/
+            padding: 8px;
+            cursor: pointer;
+        }
+        #dropdown > div:hover{
+            background-color: #f0f0f0;
+        }
+        #dropdown > div.selected{
+            background-color: #f0f0f0;
+        }
+
+    #myButton{ /*sumbit button*/
+        height: 36px; /*here height accounts for padding and border, so it's 36px !!IN TOTAL!!*/
+        font-size: 16px;
+        padding: 8px;
+        border: 1px solid black;
+    }
+
+#winner-container{ /*winner text*/
+    display: none;
+    color: hsl(195, 100%, 15%);
+    border: 3px solid hsl(195, 70%, 40%);   
+    text-align: center;
+    margin-bottom: 10px;
+    padding: 0 10px;
+    border-radius: 5px;
+    background-color: hsl(195, 85%, 90%);;
+}
+    #winner-text{
+        font-size: 3rem;
+        white-space: pre-line;
+    }
+
+#answers-label{ 
+    display: none;
+    justify-content: center;
+    gap: 10px; /*gap between elements*/
+    margin-bottom: 10px; /*spacing between rows*/    
+}
+    .newLabel{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        border-bottom: 3px solid rgb(255, 255, 255);
+        background-color: rgba(255, 255, 255, 0);
+        color: white;
+        width: 80px;
+        height: 50px;
+    }
+
+#answers-container{ /*all answers wraper*/
+    display: flex;
+    flex-direction: column-reverse; /*old answers go down off the screen*/
+}
+    .newAnswer{ /*each (answer/row)*/
+        display: flex;
+        justify-content: center;
+        gap: 5px; /*gap between elements*/
+        margin-bottom: 10px; /*spacing between rows*/
+    }
+        .newCharacteristic{
+            display: flex;
+            visibility: hidden;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            border: 3px solid rgb(0, 0, 0);
+            background-color: rgb(255, 119, 119);
+            width: 80px;
+            height: 80px;
+        }
+        .contem{ /*if vibes includes characteristic*/
+            background-color: rgb(216, 216, 73);
+        }
+        .certo{ /*if characteristic matches*/
+            background-color: rgb(116, 255, 116);
+        }
+
+#color-info{
+    position: relative;
+    display: none;
+    margin-top: 30px;
+    color: hsl(195, 100%, 15%);
+    border: 3px solid hsl(195, 70%, 40%);   
+    /* text-align: center; */
+    margin-bottom: 10px;
+    padding: 0 10px;
+    border-radius: 5px;
+    background-color: hsl(195, 85%, 90%);; 
+}
+    #close-button{
+        position: absolute;
+        right: -10px;
+        top: -10px;
+        width: 70px;
+        height: 70px;
+    }
+    #color-text{
+        font-size: 2rem;
+        white-space: pre-line;
+    }
+
+#gitHubW{
+    position: fixed;
+    left: 40px;
+    bottom: 40px;
+}
+
+.pop {
+    animation: pop 0.4s ease-in-out;
+}
+
+@keyframes pop {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
