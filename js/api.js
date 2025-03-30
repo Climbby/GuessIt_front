@@ -1,4 +1,4 @@
-let ApiURL = "https://guess-it-neon.vercel.app/api";
+const ApiURL = "https://guess-it-neon.vercel.app/api";
 
 export async function fetchUsers(table) {
   const endpoint = `${ApiURL}/tableApi`;
