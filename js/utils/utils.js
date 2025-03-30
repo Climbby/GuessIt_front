@@ -2,9 +2,7 @@ export function autoShrinkText(containerSelector, textSelector) {
   const containers = document.querySelectorAll(containerSelector);
 
   containers.forEach(container => {
-    console.log(container);
     const texts = container.querySelectorAll(textSelector);
-
     texts.forEach(text => {
       let fontSize = 16;
       text.style.fontSize = fontSize + 'px';

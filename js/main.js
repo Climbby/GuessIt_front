@@ -1,21 +1,16 @@
 import { initAutoComplete, submitAnswer, inputTextSelection, closeColors } from './utils/events.js';
-import { makeLabels, setTitle } from './utils/funcs.js';
-import { fetchUsers } from './api.js';
+import { fetchUsers, generateDailyUser } from './api.js';
+import { setTitle } from './utils/funcs.js';
 
 const tableName = "TheBridge";
+const users = await fetchUsers(tableName);
+const randomUser = await generateDailyUser(users);
 
-fetchUsers(tableName).then(data => {
-  
-  const users = data
-  const randomIndex = Math.floor(Math.random() * users.length);
-  const randomUser = users[randomIndex];
+//sets the title of the page
+setTitle(tableName);
 
-  setTitle(tableName);
-
-  //events
-  initAutoComplete(users, randomUser);
-  inputTextSelection(users, randomUser);
-  submitAnswer(users, randomUser);
-  closeColors();
-
-});
+//events
+initAutoComplete(users, randomUser);
+inputTextSelection(users, randomUser);
+submitAnswer(users, randomUser);
+closeColors();
