@@ -1,7 +1,8 @@
 import { answersContainer, inputText, answersLabel, inputContainer, winnerContainer, winnerText, colorInfo, timeoutText } from './utils/domElements.js'
+import { isColorHidden, addToClipboard, incrementAttempts } from './utils/globals.js'
 import { autoShrinkText, arraysEqual } from './utils/utils.js'
-import { isColorHidden } from './utils/globals.js'
 import { dailyTimeout } from './utils/funcs.js'
+import { clipboardClick } from './utils/events.js'
 
 export function gameLogic(users, randomUser){
 
@@ -16,6 +17,7 @@ export function gameLogic(users, randomUser){
       if (person.username.toUpperCase() === inputText.value.toUpperCase()) { // if name is valid
         const newAnswer = document.createElement('div');
         newAnswer.classList.add('newAnswer');
+        let answerText = "";
   
         for (let i = 0; i < numCharacteristicas; i++) {
           const personVal = Object.values(person)[i];
@@ -29,14 +31,21 @@ export function gameLogic(users, randomUser){
           // if (personVal === person.altura) caseAltura(newCharacteristic, personVal, randomVal);
           
 
-          if (personVal === randomVal) newCharacteristic.classList.add('certo');
-  
+          if (personVal === randomVal){
+            newCharacteristic.classList.add('certo');
+            answerText += "🟩";
+          } else{
+            answerText += "🟥";
+          }
           newAnswer.appendChild(newCharacteristic);
         }
   
         // Update users array by removing the last user analyzed
         const index = users.indexOf(person);
         users.splice(index, 1);
+        answerText = "\n" + answerText;
+        addToClipboard(answerText);
+        incrementAttempts();
   
         // Add row of characteristics
         answersContainer.appendChild(newAnswer);
@@ -76,12 +85,13 @@ function caseAltura(newCharacteristic, personVal, randomVal){
 }
 
 function isCorrect(inputText, randomUser){
-    if (inputText.value.toUpperCase() === randomUser.username.toUpperCase()) {
-        winnerContainer.style.display = "block";
-        winnerText.textContent = `YOU WIN\nAnswer: ${randomUser.username}`;
-        inputContainer.style.display = "none";
-        localStorage.setItem('lastPlayedDate', new Date().toISOString().split('T')[0]);
-    }
+  if (inputText.value.toUpperCase() === randomUser.username.toUpperCase()) {
+    clipboardClick(); // Initialize event
+    winnerContainer.style.display = "block";
+    winnerText.textContent = `YOU WIN\nAnswer: ${randomUser.username}`;
+    inputContainer.style.display = "none";
+    localStorage.setItem('lastPlayedDate', new Date().toISOString().split('T')[0]);
+  }
 }
 
 function animateAnswer(newAnswer) {

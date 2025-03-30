@@ -70,17 +70,28 @@ body{
 
 #winner-container{ /*winner text*/
     display: none;
+    position: relative;
     color: hsl(195, 100%, 15%);
     border: 3px solid hsl(195, 70%, 40%);   
-    text-align: center;
     margin-bottom: 10px;
     padding: 0 10px;
     border-radius: 5px;
     background-color: hsl(195, 85%, 90%);;
 }
     #winner-text{
-        font-size: 3rem;
+        font-size: 2rem;
+        line-height: 50px;
         white-space: pre-line;
+    }
+    #clipboardButton{
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        width: 70px;
+        height: 70px;
+    }
+    #clipboardButton:hover{
+        cursor: pointer;
     }
 
 #answers-label{ 

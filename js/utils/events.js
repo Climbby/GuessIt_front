@@ -1,7 +1,7 @@
+import { setColorHidden, setItems, getDropdownItems, getItemContent, getClipboard, getAttempts } from './globals.js'
 import { button, inputText, closeButton, colorInfo } from './domElements.js'
 import { handleSelection } from './funcs.js'
 import { gameLogic } from '../gameLogic.js'
-import { setColorHidden, setItems, getDropdownItems, getItemContent } from './globals.js'
 
 export function initAutoComplete(users, randomUser) {  
 
@@ -94,4 +94,10 @@ export function closeColors(){
     setColorHidden();
     colorInfo.style.display = "none";
   });
+}
+
+export function clipboardClick(){
+
+  const clipboardButton = document.getElementById("clipboardButton");
+  clipboardButton.addEventListener('click', () => {getClipboard(getAttempts())});
 }

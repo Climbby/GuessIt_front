@@ -3,9 +3,8 @@ import { autoShrinkText } from './utils.js';
 import { getDropdownItems } from './globals.js';
 
 export function handleSelection(selectedIndex) {
-
   let dropdownItems = getDropdownItems();
-
+  
   dropdownItems.forEach((item, index) => {
     item.classList.remove('selected'); // Remove old selection
     if (index === selectedIndex) {
@@ -19,22 +18,19 @@ export function handleSelection(selectedIndex) {
 }
 
 export function makeLabels(person){
-
   for (let characteristca in person) {
     if (characteristca == 'id') continue;
 
     const newLabel = document.createElement('div');
     newLabel.classList.add('newLabel');
     newLabel.textContent = characteristca;
-
     answersLabel.appendChild(newLabel);
   }
 
-  setTimeout(() => autoShrinkText('#answers-label', '.newLabel'), 200);
+  setTimeout(() => autoShrinkText('#answers-label', '.newLabel'), 1200);
 }
 
 export function setTitle(tableName){
-
   const title = document.getElementById("title");
   title.textContent = `GuessIt (${tableName})`;
 }
