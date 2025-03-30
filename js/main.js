@@ -16,7 +16,6 @@ fetchUsers(tableName).then(data => {
   initAutoComplete(users, randomUser);
   inputTextSelection(users, randomUser);
   submitAnswer(users, randomUser);
-  makeLabels(users[0]);
   closeColors();
 
 });

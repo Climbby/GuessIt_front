@@ -18,16 +18,24 @@ export function handleSelection(selectedIndex) {
 }
 
 export function makeLabels(person){
+  answersLabel.style.display = "flex";
   for (let characteristca in person) {
-    if (characteristca == 'id') continue;
-
     const newLabel = document.createElement('div');
     newLabel.classList.add('newLabel');
-    newLabel.textContent = characteristca;
+
+    if (characteristca == 'id') continue;
+    if (characteristca == 'username') newLabel.textContent = "Username";
+    if (characteristca == 'gender') newLabel.textContent = "Gender";
+    if (characteristca == 'favorite_kit') newLabel.textContent = "Favorite kit";
+    if (characteristca == 'strategy') newLabel.textContent = "Strategy";
+    if (characteristca == 'highest_role') newLabel.textContent = "Highest Role";
+    if (characteristca == 'leaderboards') newLabel.textContent = "Leaderboards";
+    if (characteristca == 'aura') newLabel.textContent = "Aura";
+    if (characteristca == 'registration_year') newLabel.textContent = "Registration Year";
     answersLabel.appendChild(newLabel);
   }
 
-  setTimeout(() => autoShrinkText('#answers-label', '.newLabel'), 1200);
+  autoShrinkText('#answers-label', '.newLabel');
 }
 
 export function setTitle(tableName){
