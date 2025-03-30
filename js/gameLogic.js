@@ -87,12 +87,10 @@ function caseHigherLower(newCharacteristic, personVal, randomVal){
 }
 
 function caseLeaderboards(newCharacteristic, personVal, randomVal){
+  newCharacteristic.textContent = "Top " + newCharacteristic.textContent;
   if (personVal === 0) {
-    if (personVal === randomVal) {
-      newCharacteristic.textContent = "Above 1000";
-    } else {
-      newCharacteristic.textContent = "Above 1000 ↓";
-    }
+    newCharacteristic.textContent = "Above Top 1000"
+    if (personVal !== randomVal) newCharacteristic.textContent += " ↓";
     return;
   }
   caseHigherLower(newCharacteristic, personVal, randomVal);
