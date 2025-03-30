@@ -1,4 +1,4 @@
-import { answersContainer, inputText, answersLabel, inputContainer, winnerContainer, winnerText, colorInfo, timeoutText } from './utils/domElements.js'
+import { answersContainer, inputText, inputContainer, winnerContainer, winnerText, colorInfo, timeoutText } from './utils/domElements.js'
 import { isColorHidden, addToClipboard, incrementAttempts, getAttempts } from './utils/globals.js'
 import { autoShrinkText, arraysEqual } from './utils/utils.js'
 import { dailyTimeout, makeLabels } from './utils/funcs.js'
