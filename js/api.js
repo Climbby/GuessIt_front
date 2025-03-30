@@ -1,12 +1,17 @@
-const ApiURL = "https://guess-it-neon.vercel.app/api/users";
-// const ApiURL = "http://localhost:3000/api/users";
+export async function fetchUsers(table) {
+  const ApiURL = "https://guess-it-neon.vercel.app/api/tableApi";
+  // const ApiURL = "http://localhost:3000/api/tableApi";
+  //a
+  try {
+    const res = await fetch(ApiURL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ table })
+    });
 
-export async function fetchUsers() {
-    try {
-      const res = await fetch(ApiURL);
-      return await res.json();
-    } catch (err) {
-      console.error("Error fetching users:", err);
-      return [];
-    }
+    return await res.json();
+  } catch (err) {
+    console.error("Error fetching users:", err);
+    return [];
+  }
 }
