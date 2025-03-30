@@ -2,7 +2,7 @@ import { initAutoComplete, submitAnswer, inputTextSelection, closeColors } from 
 import { makeLabels, setTitle } from './utils/funcs.js';
 import { fetchUsers } from './api.js';
 
-const tableName = "TheBridge";
+const tableName = "UGC";
 
 fetchUsers(tableName).then(data => {
   
