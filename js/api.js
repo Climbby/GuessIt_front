@@ -17,7 +17,11 @@ export async function fetchUsers(table) {
 
 export async function generateDailyUser(users) {
   const endpoint = `${ApiURL}/randomUser`;
-  return fetch(endpoint)
+  return fetch(endpoint, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({})
+  })
   .then(res => res.json())
   .then(data => {
     const index = data.index % users.length;
