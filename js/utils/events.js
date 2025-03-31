@@ -50,8 +50,7 @@ export function initAutoComplete(users, randomUser) {
 }
 
 export function submitAnswer(users, randomUser){
-
-    button.addEventListener('click', () => {gameLogic(users, randomUser)});
+  button.addEventListener('click', () => {gameLogic(users, randomUser)});
 }
 
 export function inputTextSelection(users, randomUser){
