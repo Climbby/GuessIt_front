@@ -96,8 +96,8 @@ export function closeColors(){
   });
 }
 
-export function clipboardClick(){
+export function clipboardClick(editionNumber){
 
   const clipboardButton = document.getElementById("clipboardButton");
-  clipboardButton.addEventListener('click', () => {getClipboard(getAttempts())});
+  clipboardButton.addEventListener('click', () => {getClipboard(getAttempts(), editionNumber)});
 }

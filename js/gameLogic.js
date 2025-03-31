@@ -98,10 +98,15 @@ function caseLeaderboards(newCharacteristic, personVal, randomVal){
 
 function isCorrect(inputText, randomUser){
   if (inputText.value.toUpperCase() === randomUser.username.toUpperCase()) {
-    clipboardClick(); // Initialize event
+    const begginingDate = new Date("2025-03-30");
+    const today = new Date();
+    const editionNumber = Math.floor((today - begginingDate) / (1000*60*60*24));
+
     winnerContainer.style.display = "block";
     winnerText.textContent = `YOU WIN\nAnswer: ${randomUser.username}`;
     inputContainer.style.display = "none";
+
+    clipboardClick(editionNumber); // Initialize event
     localStorage.setItem('lastPlayedDate', new Date().toISOString().split('T')[0]);
   }
 }

@@ -20,8 +20,8 @@ export function getItemContent(index){
     return dropdownItems[index].textContent;
 }
 
-export function getClipboard(attempts){
-    navigator.clipboard.writeText(`My GuessIt Score - ${attempts} Attempts\n` + clipboardWin + "\nTry today: [**HERE**](https://climbby.github.io/GuessIt_front/)");
+export function getClipboard(attempts, edition){
+    navigator.clipboard.writeText(`My GuessIt Score (#${edition}) - ${attempts} Attempts\n` + clipboardWin + "\nTry today: [**HERE**](https://climbby.github.io/GuessIt_front/)");
 }
 export function addToClipboard(character){
     clipboardWin = character + clipboardWin;
