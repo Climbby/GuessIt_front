@@ -119,6 +119,8 @@ body{
 #scrollableContainer{
     max-width: 80%;
     overflow-x: auto;
+    padding-right: 10px;
+    padding-left: 10px;
 }
 
 #answers-label{ 

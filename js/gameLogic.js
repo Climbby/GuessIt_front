@@ -51,7 +51,6 @@ export function gameLogic(users, randomUser){
       // Add row of characteristics
       answersContainer.appendChild(newAnswer);
       animateAnswer(newAnswer);
-      setTimeout(() => autoShrinkText('.newAnswer', '.newCharacteristic'), 1200);
     }
   });
 
@@ -118,5 +117,6 @@ function animateAnswer(newAnswer) {
         box.style.visibility = "visible"; 
         box.classList.add("pop");
       }, index * 150); // Delay each letter's animation
+      autoShrinkText('.newAnswer', '.newCharacteristic', index);
     });
 }

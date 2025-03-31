@@ -35,7 +35,7 @@ export function makeLabels(person){
     answersLabel.appendChild(newLabel);
   }
 
-  autoShrinkText('#answers-label', '.newLabel');
+  autoShrinkText('#answers-label', '.newLabel', 0);
 }
 
 export function setTitle(tableName){
