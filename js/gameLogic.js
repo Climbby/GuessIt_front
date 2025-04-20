@@ -35,7 +35,9 @@ export function gameLogic(users, randomUser){
         if (personVal === randomVal){
           newCharacteristic.classList.add('certo');
           answerText += "🟩";
-        } else{
+        } else if (newCharacteristic.classList.contains('contem')) {
+          answerText += "🟨";
+        } else {
           answerText += "🟥";
         }
         newAnswer.appendChild(newCharacteristic);
