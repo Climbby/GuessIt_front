@@ -32,7 +32,7 @@ export function gameLogic(users, randomUser){
         if (characteristic === "registration_year") caseHigherLower(newCharacteristic, personVal, randomVal);
         // if (personVal === person.vibe) caseVibe(newCharacteristic, personVal, randomVal);
         
-        if (personVal === randomVal){
+        if (personVal === randomVal || arraysEqual(personVal, randomVal)){
           newCharacteristic.classList.add('certo');
           answerText += "🟩";
         } else if (newCharacteristic.classList.contains('contem')) {
@@ -40,6 +40,13 @@ export function gameLogic(users, randomUser){
         } else {
           answerText += "🟥";
         }
+
+        console.log(characteristic)
+        console.log(" - ")
+        console.log(personVal)
+        console.log(randomVal)
+        console.log(" ")
+
         newAnswer.appendChild(newCharacteristic);
       }
 

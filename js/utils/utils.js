@@ -28,5 +28,6 @@ export function autoShrinkText(containerSelector, textSelector, index) {
 }
   
 export function arraysEqual(a, b) {
+  if (!Array.isArray(a) || !Array.isArray(b)) return false;
   return a.length === b.length && a.every((val, index) => val === b[index]);
 }
