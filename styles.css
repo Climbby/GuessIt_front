@@ -76,14 +76,17 @@ body{
 
 #settings {
     display: none;
+    color: white;
 }
 
 #changelog{
     display: none;
+    color: white;
 }
 
 #info{
     display: none;
+    color: white;
 }
 
 .inputContainer{ /*aligns input text and button*/

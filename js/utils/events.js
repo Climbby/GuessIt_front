@@ -1,5 +1,6 @@
 import { setColorHidden, setItems, getDropdownItems, getItemContent, getClipboard, getAttempts } from './globals.js'
-import { button, inputText, closeButton, colorInfo, settingsButton, changelogButton, infoButton } from './domElements.js'
+import { button, inputText, closeButton, colorInfo, settingsButton, changelogButton, infoButton, 
+        settingsContent, changelogContent, infoContent } from './domElements.js'
 import { handleSelection } from './funcs.js'
 import { gameLogic } from '../gameLogic.js'
 
@@ -56,26 +57,26 @@ export function submitAnswer(users, randomUser){
 
 export function settingsButtons(){
     settingsButton.addEventListener('click', () => {
-        if (settingsButton.style.display != "block") {
-            settingsButton.style.display = 'block';
+        if (settingsContent.style.display != "block") {
+            settingsContent.style.display = 'block';
         } else {
-            settingsButton.style.display = 'none';
+            settingsContent.style.display = 'none';
         }
     })
 
     changelogButton.addEventListener('click', () => {
-        if (changelogButton.style.display != "block") {
-            changelogButton.style.display = 'block';
+        if (changelogContent.style.display != "block") {
+            changelogContent.style.display = 'block';
         } else {
-            changelogButton.style.display = 'none';
+            changelogContent.style.display = 'none';
         }
     })
 
     infoButton.addEventListener('click', () => {
-        if (infoButton.style.display != "block") {
-            infoButton.style.display = 'block';
+        if (infoContent.style.display != "block") {
+            infoContent.style.display = 'block';
         } else {
-            infoButton.style.display = 'none';
+            infoContent.style.display = 'none';
         }
     })
 }
