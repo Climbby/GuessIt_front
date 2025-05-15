@@ -1,5 +1,6 @@
 import { initAutoComplete, submitAnswer, inputTextSelection, closeColors, settingsButtons } from './utils/events.js'
 import { fetchUsers, generateDailyUser } from './api.js'
+import { button } from './utils/domElements.js'
 // import { setTitle } from './utils/funcs.js'
 
 const tableName = "TheBridge"
@@ -15,3 +16,5 @@ inputTextSelection(users, randomUser)
 submitAnswer(users, randomUser)
 settingsButtons()
 closeColors()
+
+button.style.backgroundColor = 'hsl(195, 60%, 60%)'

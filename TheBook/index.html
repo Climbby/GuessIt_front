@@ -16,22 +16,10 @@
 
     <h1 id="title">The Book</h1>
 
-    <div class="book">
-        <div class="page" id="page1">
-            <h2>Page 1</h2>
-            <p>This is the first page of your Minecraft book!</p>
-        </div>
-        <div class="page hidden" id="page2">
-            <h2>Page 2</h2>
-            <p>This is the second page. Keep reading!</p>
-        </div>
-        <div class="page hidden" id="page3">
-            <h2>Page 3</h2>
-            <p>Final page. Thanks for reading!</p>
-        </div>
-        <button class="arrow left" onclick="prevPage()">←</button>
-        <button class="arrow right" onclick="nextPage()">→</button>
+    <div class="book" id="book">
+        <button class="arrow left" id="prevPage">←</button>
+        <button class="arrow right" id="nextPage">→</button>
     </div>
-    <script src="script.js"></script>
+    <script type="module" src="script.js"></script>
 </body>
 </html>
