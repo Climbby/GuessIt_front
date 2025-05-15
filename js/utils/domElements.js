@@ -8,3 +8,6 @@ export const button = document.getElementById('submitButton');
 export const colorInfo = document.getElementById('color-info');
 export const closeButton = document.getElementById('close-button');
 export const timeoutText = document.getElementById('timeoutBox');
+export const settingsButton = document.getElementById('settingsButton');
+export const changelogButton = document.getElementById('changelogButton');
+export const infoButton = document.getElementById('infoButton');
