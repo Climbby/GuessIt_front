@@ -74,6 +74,18 @@ body{
     transform: translateY(2%);
 }
 
+#settings {
+    display: none;
+}
+
+#changelog{
+    display: none;
+}
+
+#info{
+    display: none;
+}
+
 .inputContainer{ /*aligns input text and button*/
     display: flex;
     align-items: flex-start;

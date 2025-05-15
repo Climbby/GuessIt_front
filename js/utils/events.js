@@ -10,7 +10,8 @@ export function initAutoComplete(users, randomUser) {
   inputText.addEventListener("input", () => {
     const input = inputText.value.toLowerCase();
     const userNames = users.map(user => user.username);
-    const filtered = userNames.filter(option => option.toLowerCase().includes(input));
+    let filtered = userNames.filter(option => option.toLowerCase().startsWith(input));
+    if (input === "*") filtered = userNames
     dropdown.innerHTML = "";
 
     if (input === "") {

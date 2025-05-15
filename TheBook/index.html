@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GuessIt</title>
     <link rel="icon" href="../assets/favIcon.png" type="image/png">
-    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <nav>
@@ -13,4 +13,25 @@
         <a href="https://climbby.github.io/TheBridge/TheBook/">The Book</a>
         <a href="https://climbby.github.io/TheBridge/Socials/">Socials</a>
     </nav>    
+
+    <h1 id="title">The Book</h1>
+
+    <div class="book">
+        <div class="page" id="page1">
+            <h2>Page 1</h2>
+            <p>This is the first page of your Minecraft book!</p>
+        </div>
+        <div class="page hidden" id="page2">
+            <h2>Page 2</h2>
+            <p>This is the second page. Keep reading!</p>
+        </div>
+        <div class="page hidden" id="page3">
+            <h2>Page 3</h2>
+            <p>Final page. Thanks for reading!</p>
+        </div>
+        <button class="arrow left" onclick="prevPage()">←</button>
+        <button class="arrow right" onclick="nextPage()">→</button>
+    </div>
+    <script src="script.js"></script>
 </body>
+</html>
