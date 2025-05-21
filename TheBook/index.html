@@ -16,7 +16,24 @@
 
     <h1 id="title">The Book</h1>
 
-    <div class="book" id="book">
+    <div id="settings">
+        <div id="settings-buttons">
+            <button class="settings-button" id="filters-button"><img src="../assets/filterIcon.png" alt="filter"></button>
+            <button class="settings-button" id="refresh-button"><img src="../assets/refreshIcon.png" alt="refresh"></button>
+        </div>
+
+        <ul id="filters">
+            <label><input type="checkbox">gender</label><br>
+            <label><input type="checkbox">favorite kit</label><br>
+            <label><input type="checkbox">strategy</label><br>
+            <label><input type="checkbox">highest role</label><br>
+            <label><input type="checkbox">leaderboards</label><br>
+            <label><input type="checkbox">aura</label><br>
+            <label><input type="checkbox">registration year</label>
+        </ul>
+    </div>
+
+    <div class="book" id="book">    
         <button class="arrow left" id="prevPage">←</button>
         <button class="arrow right" id="nextPage">→</button>
     </div>

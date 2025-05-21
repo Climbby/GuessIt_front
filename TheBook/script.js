@@ -1,9 +1,14 @@
 const ApiURL = "https://guess-it-neon.vercel.app/api"
 
 const users = await fetchUsers("TheBridge")
+const filtersButton = document.getElementById('filters-button')
+const refreshButton = document.getElementById('refresh-button')
+const filters = document.getElementById('filters')
 const prevButton = document.getElementById('prevPage')
 const nextButton = document.getElementById('nextPage')
 const book = document.getElementById('book')
+
+filters.style.display = 'none'
 let pageNum = 1
 let currentPage = 1
 let totalPages = 3
@@ -29,16 +34,6 @@ function prevPage() {
     }
 }
 
-function buttonEvents() {
-    prevButton.addEventListener('click', () => {
-        prevPage()
-    })
-
-    nextButton.addEventListener('click', () => {
-        nextPage()
-    })
-}
-
 async function fetchUsers(table) {
   const endpoint = `${ApiURL}/tableApi`
   return fetch(endpoint, {
@@ -61,7 +56,6 @@ function makePages(){
         const divTitle = document.createElement('h2')
         const content = document.createElement('p')
 
-        // content.textContent = "waba"
         content.id = username
         content.style.whiteSpace = 'pre';
         divTitle.textContent = username
@@ -88,7 +82,41 @@ function makePages(){
     totalPages = pageNum - 1
 }
 
+function refreshPages() {
+    let listOfNewUsers = users
+    console.log(listOfNewUsers)
+
+    currentPage = 1
+    showPage(currentPage)
+}
+
+function showFilters(){
+    if (filters.style.display == 'none') {
+        filters.style.display = 'block'
+    }
+    else{
+        filters.style.display = 'none'
+    }
+}
+
+function buttonEvents() {
+    filtersButton.addEventListener('click', () => {
+        showFilters()
+    })
+
+    refreshButton.addEventListener('click', () => {
+        refreshPages()
+    })
+
+    prevButton.addEventListener('click', () => {
+        prevPage()
+    })
+
+    nextButton.addEventListener('click', () => {
+        nextPage()
+    })
+}
+
 buttonEvents()
 makePages()
-// Initialize first page
-showPage(1)
+showPage(currentPage)
