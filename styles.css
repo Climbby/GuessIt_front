@@ -153,14 +153,17 @@ body{
     display: none;
     margin-bottom: 20px;
     padding: 0px 20px;
+    font-size: 2.2rem;
     border: 3px solid hsl(195, 80%, 20%);
     border-radius: 8px;
     color: hsl(195, 80%, 20%);
     background-color: hsla(195, 95%, 95%, 0.9);
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
 }
+    #timer{
+        margin-right: 65px;
+    }
     #winner-text{
-        font-size: 2.2rem;
         line-height: 50px;
         white-space: pre-line;
     }

@@ -1,6 +1,7 @@
 export const inputContainer = document.querySelector('.inputContainer');
 export const answersLabel = document.getElementById('answers-label');
 export const winnerContainer = document.getElementById('winner-container');
+export const timer = document.getElementById('timer');
 export const winnerText = document.getElementById('winner-text');
 export const answersContainer = document.getElementById('answers-container');
 export const inputText = document.getElementById('textInput');

@@ -1,14 +1,15 @@
-import { answersLabel } from './domElements.js';
-import { autoShrinkText } from './utils.js';
-import { getDropdownItems } from './globals.js';
+import { gameLogic } from '../gameLogic.js'
+import { answersLabel, timer, inputText } from './domElements.js'
+import { autoShrinkText } from './utils.js'
+import { getDropdownItems } from './globals.js'
 
 export function handleSelection(selectedIndex) {
-  let dropdownItems = getDropdownItems();
+  let dropdownItems = getDropdownItems()
   
   dropdownItems.forEach((item, index) => {
-    item.classList.remove('selected'); // Remove old selection
+    item.classList.remove('selected') // Remove old selection
     if (index === selectedIndex) {
-      item.classList.add('selected'); // Add class to selected item
+      item.classList.add('selected') // Add class to selected item
       item.scrollIntoView({
         block: 'nearest', // keeps it minimal (no big jump)
         behavior: 'smooth' // optional — smooth animation
@@ -18,10 +19,10 @@ export function handleSelection(selectedIndex) {
 }
 
 export function makeLabels(person){
-  answersLabel.style.display = "flex";
+  answersLabel.style.display = "flex"
   for (let characteristca in person) {
-    const newLabel = document.createElement('div');
-    newLabel.classList.add('newLabel');
+    const newLabel = document.createElement('div')
+    newLabel.classList.add('newLabel')
 
     if (characteristca == 'id') continue;
     if (characteristca == 'username') newLabel.textContent = "Username";
@@ -38,7 +39,35 @@ export function makeLabels(person){
   autoShrinkText('#answers-label', '.newLabel', 0);
 }
 
-export function setTitle(tableName){
-  const title = document.getElementById("title");
-  title.textContent = `GuessIt (${tableName})`;
+export function makeTimer(){
+  // Get current time
+  const now = new Date();
+  
+  // Create a date object for tomorrow at midnight
+  const tomorrow = new Date();
+  tomorrow.setDate(tomorrow.getDate() + 1);
+  tomorrow.setHours(0, 0, 0, 0);
+  
+  // Calculate the difference in milliseconds
+  const diff = tomorrow - now;
+  
+  // Convert milliseconds to hours, minutes, seconds
+  const hours = (Math.floor(diff / (1000 * 60 * 60))).toString().padStart(2, '0')
+  const minutes = (Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60))).toString().padStart(2, '0')
+  const seconds = (Math.floor((diff % (1000 * 60)) / 1000)).toString().padStart(2, '0')
+  
+  let time = `${hours}:${minutes}:${seconds}`;
+  timer.textContent = `Next one in: ${time}`
+
+  setTimeout(makeTimer, 1000)
+}
+
+export function loadPrevAnswers(users, randomUser){
+    const storedAnswers = localStorage.getItem('userAnswers')
+    const answersArray = storedAnswers ? JSON.parse(storedAnswers) : []
+
+    answersArray.forEach(answer => {
+        inputText.value = answer
+        gameLogic(users, randomUser)
+    });
 }
