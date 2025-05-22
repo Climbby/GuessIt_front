@@ -1,36 +1,33 @@
 const ApiURL = "https://guess-it-neon.vercel.app/api"
 
 const users = await fetchUsers("TheBridge")
+let newUsers = users;
 const filtersButton = document.getElementById('filters-button')
 const refreshButton = document.getElementById('refresh-button')
-const filters = document.getElementById('filters')
+const sidebar = document.getElementById('sidebar')
+const sidebarButtons = document.querySelectorAll('.sidebar-item')
+const clearButtons = document.querySelectorAll('#clear-button')
+const sidebarOptions = document.querySelectorAll('.sidebar-list')
+const closeButton = document.getElementById('sidebar-close')
 const prevButton = document.getElementById('prevPage')
 const nextButton = document.getElementById('nextPage')
+const bookTitle = document.getElementById('bookTitle')
+const bookContent = document.getElementById('bookContent')
 const book = document.getElementById('book')
-
-filters.style.display = 'none'
-let pageNum = 1
 let currentPage = 1
-let totalPages = 3
-
-function showPage(pageNum) {
-    document.querySelectorAll('.page').forEach(page => {
-        page.classList.add('hidden')
-    });
-    document.getElementById(`page${pageNum}`).classList.remove('hidden')
-}
+let totalPages
 
 function nextPage() {
     if (currentPage < totalPages) {
         currentPage++
-        showPage(currentPage)
+        showPage()
     }
 }
 
 function prevPage() {
     if (currentPage > 1) {
         currentPage--
-        showPage(currentPage)
+        showPage()
     }
 }
 
@@ -49,63 +46,93 @@ async function fetchUsers(table) {
     })
 }
 
-function makePages(){
-    const userNames = users.map(user => user.username)
-    userNames.forEach(username => {
-        const newDiv = document.createElement('div')
-        const divTitle = document.createElement('h2')
-        const content = document.createElement('p')
+function showPage(){
+    totalPages = newUsers.length
+    let user = newUsers[currentPage-1]
+    let userText = ""
+    bookTitle.textContent = user.username
 
-        content.id = username
-        content.style.whiteSpace = 'pre';
-        divTitle.textContent = username
-        newDiv.classList.add('page', 'hidden')
-        newDiv.id = `page${pageNum}`
-        pageNum++
+    for (let characteristic in user) {
+        if (characteristic === "id") continue;
+        if (characteristic === "username") continue;
 
-        newDiv.appendChild(divTitle)
-        newDiv.appendChild(content)
-        book.appendChild(newDiv)
+        userText += `${characteristic}: ${user[characteristic]}\n`        
+    }
+    bookContent.textContent = userText       
+}
+
+function openMenu(){
+    closeButton.addEventListener('click', () => {
+        sidebar.style.transform = 'translateX(-100%)';
+    });
+  
+    sidebar.style.transform = 'translateX(0)';
+}
+
+function showList(id){
+    sidebarOptions.forEach(sidebarOption => {
+        if (sidebarOption.id !== id) return
+        if (sidebarOption.style.display !== 'block') {
+            sidebarOption.style.display = 'block'
+        }
+        else{
+            sidebarOption.style.display = 'none'
+        }
+    });
+}
+
+function unselectOption(category){
+    sidebarOptions.forEach(sidebarOption => {
+        if (sidebarOption.id != category) return
+        let checkedOption = sidebarOption.querySelector('input:checked')
+        if (checkedOption === null) return
+        checkedOption.checked = false
+    });
+}
+
+function checkChecked(){
+    let conditions = {}
+
+    sidebarOptions.forEach(sidebarOption => {
+       let checkedOption = sidebarOption.querySelector('input:checked')
+       if (checkedOption === null) return
+       conditions[checkedOption.name] = checkedOption.value
     });
 
-    users.forEach(person => {
-        let content = document.getElementById(person["username"])
-
-        for (let characteristic in person) {
-            if (characteristic === "id") continue;
-            if (characteristic === "username") continue;
-
-            content.textContent += `${characteristic}: ${person[characteristic]}\n`        
+    newUsers = users
+    newUsers = newUsers.filter(user => {
+        for (let characteristic in conditions) {
+            if(user[characteristic] != conditions[characteristic]){
+                return false
+            }
         }
+        return true
     })
 
-    totalPages = pageNum - 1
-}
-
-function refreshPages() {
-    let listOfNewUsers = users
-    console.log(listOfNewUsers)
-
+    
     currentPage = 1
-    showPage(currentPage)
+    showPage()
 }
 
-function showFilters(){
-    if (filters.style.display == 'none') {
-        filters.style.display = 'block'
-    }
-    else{
-        filters.style.display = 'none'
-    }
-}
-
-function buttonEvents() {
+function buttonEvents(){
     filtersButton.addEventListener('click', () => {
-        showFilters()
+        openMenu()
+    })
+
+    sidebarButtons.forEach(sidebarButton => {
+        sidebarButton.addEventListener('click', () => {
+            showList(sidebarButton.id)
+        })
+    });
+
+    clearButtons.forEach(clearButton => {
+        clearButton.addEventListener('click', () => {
+            unselectOption(clearButton.name)
+        })
     })
 
     refreshButton.addEventListener('click', () => {
-        refreshPages()
+        checkChecked()
     })
 
     prevButton.addEventListener('click', () => {
@@ -118,5 +145,4 @@ function buttonEvents() {
 }
 
 buttonEvents()
-makePages()
-showPage(currentPage)
+showPage()

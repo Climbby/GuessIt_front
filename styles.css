@@ -7,8 +7,7 @@
 nav{
     display: grid;
     position: sticky;
-    grid-template-columns: repeat(3, 1fr);
-    justify-items: stretch;
+    grid-template-columns: repeat(4, 1fr);
     white-space: nowrap;
     background-color: hsl(195, 53%, 79%);
     opacity: 1;
