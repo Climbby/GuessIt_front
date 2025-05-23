@@ -40,14 +40,10 @@ export function makeLabels(person){
 }
 
 export function makeTimer(){
-  // Get current time
+
   const now = new Date();
-  
-  // Create a date object for tomorrow at midnight
-  const tomorrow = new Date();
-  tomorrow.setDate(tomorrow.getDate() + 1);
-  tomorrow.setHours(0, 0, 0, 0);
-  
+  const tomorrow = getTomorrowTime()
+
   // Calculate the difference in milliseconds
   const diff = tomorrow - now;
   
@@ -62,9 +58,24 @@ export function makeTimer(){
   setTimeout(makeTimer, 1000)
 }
 
+export function getTomorrowTime(){
+  const tomorrow = new Date();
+  tomorrow.setDate(tomorrow.getDate() + 1);
+  tomorrow.setHours(0, 0, 0, 0);
+
+  return tomorrow
+}
+
 export function loadPrevAnswers(users, randomUser){
+    localStorage.removeItem('lastPlayedDate')
     const storedAnswers = localStorage.getItem('userAnswers')
-    const answersArray = storedAnswers ? JSON.parse(storedAnswers) : []
+    const answersArray = storedAnswers ? JSON.parse(storedAnswers).value : []
+    const now = new Date().getTime()
+
+    if (now > answersArray.expires) {
+      localStorage.removeItem('userAnswers')
+      answersArray = []
+    }
 
     answersArray.forEach(answer => {
         inputText.value = answer

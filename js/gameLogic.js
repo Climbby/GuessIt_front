@@ -1,7 +1,7 @@
 import { answersContainer, inputText, inputContainer, winnerContainer, winnerText, colorInfo } from './utils/domElements.js'
 import { isColorHidden, addToClipboard, incrementAttempts, getAttempts } from './utils/globals.js'
 import { autoShrinkText, arraysEqual } from './utils/utils.js'
-import { makeLabels, makeTimer } from './utils/funcs.js'
+import { makeLabels, makeTimer, getTomorrowTime } from './utils/funcs.js'
 import { clipboardClick } from './utils/events.js'
 
 export function gameLogic(users, randomUser){
@@ -49,9 +49,15 @@ export function gameLogic(users, randomUser){
       animateAnswer(newAnswer)
 
       const storedAnswers = localStorage.getItem('userAnswers')
-      const answersArray = storedAnswers ? JSON.parse(storedAnswers) : []
-      if (!(inputText in answersArray)) answersArray.push(inputText.value)
-      localStorage.setItem('userAnswers', JSON.stringify(answersArray))
+      const answersArray = storedAnswers ? JSON.parse(storedAnswers).value : []
+      if (!answersArray.includes(inputText.value)) answersArray.push(inputText.value)
+
+      const tomorrow = getTomorrowTime()
+      const answersData = {
+        value: answersArray,
+        expires: tomorrow.getTime()
+      }
+      localStorage.setItem('userAnswers', JSON.stringify(answersData))
     }
   });
 

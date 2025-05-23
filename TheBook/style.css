@@ -56,6 +56,13 @@ nav a:hover{
     background-color: hsl(25, 100%, 67%);
 }
 
+#login-button{
+    display: flex;
+    margin: 0 auto;
+    margin-top: 20px;
+    padding: 20px 50px;
+}
+
 #sidebar{
     position: fixed;
     top: 0;
@@ -67,6 +74,7 @@ nav a:hover{
     overflow: auto;
     transition: transform 0.3s ease;
     transform: translateX(-100%);
+    z-index: 2;
 }
 #sidebar-close{
     position: absolute;
