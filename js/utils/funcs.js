@@ -76,7 +76,7 @@ export function loadPrevAnswers(users, randomUser){
       const parsed = JSON.parse(storedAnswers)
         
       if(Array.isArray(parsed)){
-        answersArray = parsed
+        answersArray = [] 
       }
       else if (typeof parsed === 'object'){
         answersArray = parsed.value
