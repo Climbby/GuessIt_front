@@ -76,6 +76,7 @@ export function loadPrevAnswers(users, randomUser){
       const parsed = JSON.parse(storedAnswers)
         
       if(Array.isArray(parsed)){
+        localStorage.removeItem('userAnswers')
         answersArray = [] 
       }
       else if (typeof parsed === 'object'){
