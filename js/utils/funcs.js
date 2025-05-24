@@ -69,14 +69,27 @@ export function getTomorrowTime(){
 export function loadPrevAnswers(users, randomUser){
     localStorage.removeItem('lastPlayedDate')
     const storedAnswers = localStorage.getItem('userAnswers')
-    const answersArray = storedAnswers ? JSON.parse(storedAnswers).value : []
-    const now = new Date().getTime()
+    let answersArray = []
+    let expires = 0
 
-    if (now > answersArray.expires) {
+    if(storedAnswers) {
+      const parsed = JSON.parse(storedAnswers)
+        
+      if(Array.isArray(parsed)){
+        answersArray = parsed
+      }
+      else if (typeof parsed === 'object'){
+        answersArray = parsed.value
+        expires = parsed.expires
+      }
+    }
+    
+    const now = new Date().getTime()
+    if (expires && now > expires) {
       localStorage.removeItem('userAnswers')
       answersArray = []
     }
-
+    
     answersArray.forEach(answer => {
         inputText.value = answer
         gameLogic(users, randomUser)
